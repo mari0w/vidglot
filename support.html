@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vidglot - 视频字幕学习工具技术支持">
+    <meta name="keywords" content="Vidglot,100LS,技术支持,帮助,联系我们">
+    <title>Vidglot - 技术支持</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 18px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        h3 {
+            color: #495057;
+            font-size: 18px;
+            margin: 20px 0 15px;
+        }
+        
+        ul {
+            padding-left: 30px;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .contact-email {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-2px);
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .links-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .links-section a {
+            color: #667eea;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            font-weight: 500;
+        }
+        
+        .links-section a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            nav a {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        .update-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .app-badge {
+            display: inline-block;
+            margin: 20px 10px;
+        }
+        
+        .app-badge img {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="app-icon">📚</div>
+            <h1>Vidglot</h1>
+            <p class="tagline">通过视频和字幕联动，让外语学习更高效</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#overview">概述</a></li>
+                <li><a href="#features">功能特点</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#privacy">隐私政策</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <section id="overview">
+                <h2>关于 Vidglot</h2>
+                <p>Vidglot 是一款专为 100LS 训练法设计的 iOS 视频学习应用。通过智能的视频和字幕联动功能，让您能够高效地学习外语。无论您是想通过美剧学英语，还是通过动漫学日语，Vidglot 都能让您的学习过程更加轻松有趣。</p>
+                
+                <div class="update-note">
+                    <strong>最新版本：</strong>1.0.0<br>
+                    <strong>更新日期：</strong>2025年8月23日<br>
+                    <strong>系统要求：</strong>iOS 14.0 或更高版本
+                </div>
+            </section>
+            
+            <section id="features">
+                <h2>核心功能</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>精准跳转</h3>
+                        <p>点击任意字幕，视频立即跳转到对应时间点，毫秒级精度定位</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>片段重复</h3>
+                        <p>支持单句循环和AB段重复，反复练习直到完全掌握</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>倍速播放</h3>
+                        <p>0.25x-2.0x 自由调节播放速度，适应不同学习阶段</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>多格式支持</h3>
+                        <p>支持 SRT、VTT、ASS 等主流字幕格式，智能识别各种编码</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>本地存储</h3>
+                        <p>所有数据存储在本地，保护您的隐私安全</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>进度管理</h3>
+                        <p>自动记录学习进度，支持断点续学</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="faq">
+                <h2>常见问题</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 什么是 100LS 训练法？</div>
+                    <div class="faq-answer">A: 100LS (100 Listen & Speak) 训练法是一种通过反复观看和跟读同一部影视作品100遍来掌握外语的学习方法。这种方法强调通过大量重复形成语言本能，像学习母语一样自然地掌握外语。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: Vidglot 支持哪些视频格式？</div>
+                    <div class="faq-answer">A: Vidglot 支持 iOS 系统原生支持的所有视频格式，包括 MP4、MOV、M4V 等。您可以从相册或文件系统导入视频。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 支持哪些字幕格式？</div>
+                    <div class="faq-answer">A: 目前支持 SRT、VTT、ASS 等主流字幕格式。应用会智能识别字幕文件的编码格式，确保中文、英文、日文等各种语言都能正确显示。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 如何导入视频和字幕？</div>
+                    <div class="faq-answer">A: 在首页点击"创建视频"按钮，输入视频名称，然后选择视频文件（可以从相册或文件选择），接着选择对应的字幕文件。应用会自动解析字幕并与视频关联。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 我的数据会上传到服务器吗？</div>
+                    <div class="faq-answer">A: 不会。Vidglot 采用完全本地化的存储方案，所有视频、字幕和学习记录都保存在您的设备本地，不会上传到任何服务器。您的隐私得到充分保护。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 如何使用片段重复功能？</div>
+                    <div class="faq-answer">A: 在视频播放界面，您可以点击重复按钮选择重复模式。单句循环会重复当前字幕对应的片段，AB段重复则允许您自定义重复的起止时间。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 为什么视频跳转有时不够精准？</div>
+                    <div class="faq-answer">A: 这通常是由于视频文件的关键帧间隔较大导致的。Vidglot 已经使用了最高精度的跳转方式，但某些视频格式可能会有轻微偏差。建议使用 MP4 格式的视频以获得最佳体验。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q: 应用崩溃或无响应怎么办？</div>
+                    <div class="faq-answer">A: 请尝试：1) 重启应用；2) 检查设备存储空间是否充足；3) 确保 iOS 系统版本为 14.0 或更高；4) 如果问题持续，请通过邮件联系我们并提供详细的问题描述。</div>
+                </div>
+            </section>
+            
+            <section id="contact">
+                <h2>联系我们</h2>
+                <p>如果您在使用过程中遇到任何问题，或者有功能建议和改进意见，欢迎随时联系我们。我们非常重视每一位用户的反馈，并会尽快回复您的邮件。</p>
+                
+                <div class="contact-card">
+                    <h3>技术支持邮箱</h3>
+                    <a href="mailto:pingyeaa@163.com" class="contact-email">pingyeaa@163.com</a>
+                    <p style="margin-top: 20px; font-size: 14px;">我们通常会在 1-2 个工作日内回复</p>
+                </div>
+                
+                <h3>反馈建议</h3>
+                <p>您的反馈对我们非常重要！如果您有以下需求，请联系我们：</p>
+                <ul style="line-height: 2;">
+                    <li>功能建议或改进意见</li>
+                    <li>发现了应用中的问题或错误</li>
+                    <li>需要支持新的字幕格式</li>
+                    <li>使用方法咨询</li>
+                    <li>商业合作洽谈</li>
+                </ul>
+            </section>
+            
+            <section id="privacy">
+                <h2>隐私与条款</h2>
+                <p>我们非常重视您的隐私保护。Vidglot 承诺保护您的个人信息安全，所有数据均存储在本地设备，不会上传到服务器。</p>
+                
+                <div class="links-section">
+                    <a href="privacy-policy.html">查看完整隐私政策</a>
+                    <a href="#terms">使用条款</a>
+                    <a href="#disclaimer">免责声明</a>
+                </div>
+                
+                <h3>数据安全承诺</h3>
+                <ul style="line-height: 2;">
+                    <li>所有视频和字幕文件仅存储在您的设备本地</li>
+                    <li>不收集或上传任何个人身份信息</li>
+                    <li>不包含任何第三方追踪或分析工具</li>
+                    <li>完全离线可用，无需网络连接</li>
+                    <li>删除应用即可彻底清除所有数据</li>
+                </ul>
+            </section>
+            
+            <section id="download">
+                <h2>下载 Vidglot</h2>
+                <p>立即下载 Vidglot，开始您的 100 天语言突破之旅！</p>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <!-- App Store 下载按钮占位 -->
+                    <div style="display: inline-block; background: #000; color: white; padding: 15px 30px; border-radius: 10px;">
+                        <div style="font-size: 12px;">即将上线</div>
+                        <div style="font-size: 18px; font-weight: bold;">App Store</div>
+                    </div>
+                </div>
+                
+                <h3>系统要求</h3>
+                <ul style="line-height: 2;">
+                    <li>iOS 14.0 或更高版本</li>
+                    <li>iPhone、iPad 和 iPod touch 兼容</li>
+                    <li>需要约 50MB 存储空间（不包括视频文件）</li>
+                </ul>
+            </section>
+            
+            <section id="updates">
+                <h2>更新日志</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">版本 1.0.0 - 2025年8月23日</div>
+                    <div class="faq-answer">
+                        • 首次发布<br>
+                        • 支持视频和字幕智能联动<br>
+                        • 支持 SRT、VTT、ASS 字幕格式<br>
+                        • 倍速播放和片段重复功能<br>
+                        • 学习进度自动保存<br>
+                        • 优化大文件性能
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>© 2025 Vidglot. 保留所有权利。</p>
+            <p>用您喜欢的视频，掌握任何语言。</p>
+            <p style="margin-top: 15px;">
+                <a href="mailto:pingyeaa@163.com">联系我们</a> | 
+                <a href="privacy-policy.html">隐私政策</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
