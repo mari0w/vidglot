@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidglot - 看视频学外语</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* 头部导航 */
+        header {
+            background: #fff;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fd8284;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #fd8284;
+        }
+
+        /* 主hero区域 */
+        .hero {
+            background: linear-gradient(135deg, #fd8284 0%, #e74c3c 100%);
+            color: white;
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: white;
+            clip-path: polygon(0 60%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #fd8284;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.4s;
+            animation-fill-mode: both;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+
+        /* 功能特点 */
+        .features {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: #fd8284;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fd8284 0%, #e74c3c 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+
+        /* 使用步骤 */
+        .steps {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: white;
+            border: 3px solid #fd8284;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fd8284;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            background: #fd8284;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* 连接线 */
+        @media (min-width: 768px) {
+            .step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, #fd8284 0%, #fd8284 50%, #ddd 50%, #ddd 100%);
+                background-size: 10px 2px;
+                z-index: -1;
+            }
+        }
+
+        /* 优势说明 */
+        .benefits {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #fd8284 0%, #e74c3c 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* CTA区域 */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #fd8284 0%, #e74c3c 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1.3rem 3rem;
+            background: white;
+            color: #fd8284;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .ios-note {
+            margin-top: 2rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* 页脚 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: #95a5a6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+        }
+
+        .footer-links a {
+            color: #95a5a6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fd8284;
+        }
+
+        .copyright {
+            color: #7f8c8d;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滚动动画 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .features-grid,
+            .steps-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        /* 细节优化 */
+        ::selection {
+            background: #fd8284;
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #fd8284;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="brand">Vidglot</div>
+            <ul class="nav-links">
+                <li><a href="#features">功能</a></li>
+                <li><a href="#steps">使用</a></li>
+                <li><a href="#benefits">优势</a></li>
+                <li><a href="#download">下载</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>用视频学外语</h1>
+            <p>让每一部喜欢的影片都成为你的专属教材</p>
+            <a href="https://apps.apple.com/hk/app/vidglot/id6751437187" class="cta-button">
+                立即免费下载
+            </a>
+        </div>
+    </section>
+
+    <!-- 功能特点 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">强大功能</h2>
+            <p class="section-subtitle">专为语言学习设计的每一个细节</p>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🎬</div>
+                    <h3>视频字幕联动</h3>
+                    <p>点击任意台词，视频自动跳转到对应位置，精准定位每个学习点，让学习更高效</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">📝</div>
+                    <h3>智能字幕解析</h3>
+                    <p>支持SRT、VTT、ASS等主流字幕格式，自动识别多种编码，完美显示各种语言</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">⚡</div>
+                    <h3>精准时间控制</h3>
+                    <p>毫秒级时间跳转精度，支持片段重复播放，让你反复练习重点句子直到完全掌握</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">📚</div>
+                    <h3>学习进度管理</h3>
+                    <p>自动记录学习位置，智能标记已学内容，断点续学更方便，学习进度一目了然</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🎯</div>
+                    <h3>倍速播放</h3>
+                    <p>0.25x到2.0x灵活调节播放速度，适应不同水平的学习需求，循序渐进提升听力</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>流畅体验</h3>
+                    <p>优化大文件处理性能，千条字幕也能流畅滚动，学习过程不卡顿，体验更流畅</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用步骤 -->
+    <section class="steps" id="steps">
+        <div class="steps-container">
+            <h2 class="section-title">简单三步</h2>
+            <p class="section-subtitle">轻松开启你的语言学习之旅</p>
+            <div class="steps-grid">
+                <div class="step scroll-reveal">
+                    <div class="step-number">1</div>
+                    <h3>导入视频</h3>
+                    <p>从相册或文件选择你喜欢的视频内容</p>
+                </div>
+                <div class="step scroll-reveal">
+                    <div class="step-number">2</div>
+                    <h3>添加字幕</h3>
+                    <p>导入对应的字幕文件，自动解析同步</p>
+                </div>
+                <div class="step scroll-reveal">
+                    <div class="step-number">3</div>
+                    <h3>开始学习</h3>
+                    <p>点击台词跳转播放，轻松掌握每个表达</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品优势 -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">为什么选择 Vidglot</h2>
+            <p class="section-subtitle">让语言学习成为一种享受</p>
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">🎭</div>
+                    <h4>情境学习</h4>
+                    <p>在真实场景中学习语言，理解语境和文化背景，记忆更深刻</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">🗣</div>
+                    <h4>地道表达</h4>
+                    <p>学习母语者的真实用法，告别生硬的教科书式表达</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">🎨</div>
+                    <h4>兴趣驱动</h4>
+                    <p>用喜欢的内容学习，保持学习动力和热情</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">📈</div>
+                    <h4>效率提升</h4>
+                    <p>精准定位学习内容，告别无效重复，学习效率翻倍</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>个性定制</h4>
+                    <p>根据自己的节奏和水平学习，真正的个性化学习体验</p>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon">📱</div>
+                    <h4>随时随地</h4>
+                    <p>iPhone、iPad 完美适配，随时随地开始学习</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="cta-section" id="download">
+        <div class="cta-content">
+            <h2>立即开始学习</h2>
+            <p>完全免费，无内购，无广告</p>
+            <a href="https://apps.apple.com/hk/app/vidglot/id6751437187" class="download-btn">
+                前往 App Store 下载
+            </a>
+            <p class="ios-note">支持 iOS 15.0 或更高版本</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Vidglot</div>
+            <p class="footer-tagline">让语言学习成为一种享受</p>
+            <div class="footer-links">
+                <a href="https://apps.apple.com/hk/app/vidglot/id6751437187">App Store</a>
+                <a href="#">支持</a>
+                <a href="#">隐私政策</a>
+                <a href="#">使用条款</a>
+            </div>
+            <p class="copyright">&copy; 2024 Vidglot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 滚动显示动画
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // 初始化检查
+
+        // 导航栏滚动效果
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
